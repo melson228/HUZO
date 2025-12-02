@@ -61,11 +61,12 @@ export default function Products() {
                 onMouseLeave={() => setSelectedProduct(null)}
                 onClick={() => handleQuickView(product)}
               >
-                <div className="h-48 bg-gradient-to-br from-huzo-mint to-huzo-cream relative">
+                <div className="h-48 bg-linear-to-br from-huzo-mint to-huzo-cream relative">
                   <ProductImage
                     images={product.images}
                     alt={product.name}
-                    className="object-cover"
+                    objectFit="cover" //
+                    enableSwipe={false}
                   />
 
                   <div className="absolute top-3 left-3 bg-huzo-green text-huzo-cream px-2 py-1 rounded text-xs">
