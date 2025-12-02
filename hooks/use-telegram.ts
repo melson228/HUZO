@@ -30,6 +30,7 @@ export const useTelegram = () => {
 
     const botToken = process.env.NEXT_PUBLIC_TELEGRAM_BOT_TOKEN;
     const chatId = process.env.NEXT_PUBLIC_TELEGRAM_CHAT_ID;
+    const yourTelegramUsername = process.env.TELEGRAM_USERNAME_COMPANY;
 
     if (!botToken || !chatId) {
       console.error("Telegram credentials not found");
@@ -59,9 +60,7 @@ export const useTelegram = () => {
     }
   };
 
-  const getTelegramUrl = (orderId: string) => {
-    const yourTelegramUsername = "your-username";
-
+  const getTelegramUrl = (orderId: string, yourTelegramUsername: string) => {
     const message = `Здравствуйте! Мой код заказа: ${orderId}`;
 
     return `https://t.me/${yourTelegramUsername}?text=${encodeURIComponent(
