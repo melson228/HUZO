@@ -7,6 +7,7 @@ import { useCart } from "@/context/cart-context";
 import { useState, useMemo } from "react";
 import ProductModal from "@/components/ui/product-modal";
 import CartCounter from "@/components/ui/cart-counter";
+import { ProductImage } from "@/components/ui/product-image";
 
 export default function CatalogPage() {
   const categories = [
@@ -35,15 +36,12 @@ export default function CatalogPage() {
     console.log("Добавлено в корзину из модалки:", product);
   };
 
-  // Фильтрация товаров
   const filteredProducts = useMemo(() => {
     return allProducts.filter((product) => {
-      // Фильтр по категории
       const categoryMatch =
         selectedCategory === "Все товары" ||
         product.category === selectedCategory;
 
-      // Фильтр по поиску
       const searchMatch =
         searchQuery === "" ||
         product.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
@@ -64,7 +62,6 @@ export default function CatalogPage() {
     <>
       <div className="min-h-screen bg-huzo-cream pt-20">
         <div className="container mx-auto px-6 py-12">
-          {/* Header */}
           <div className="text-center mb-12">
             <h1 className="text-6xl font-light text-huzo-green mb-6">
               Каталог HUZO
@@ -74,7 +71,6 @@ export default function CatalogPage() {
             </p>
           </div>
 
-          {/* Filters and Search */}
           <div className="bg-white rounded-2xl p-6 mb-8">
             <div className="flex flex-col lg:flex-row gap-4 items-center justify-between">
               <div className="flex items-center gap-4 w-full md:w-auto">
@@ -112,7 +108,6 @@ export default function CatalogPage() {
             </div>
           </div>
 
-          {/* Products Count */}
           <div className="mb-6">
             <p className="text-huzo-green/70">
               Найдено товаров: {filteredProducts.length}
@@ -132,31 +127,26 @@ export default function CatalogPage() {
               </p>
             </div>
           ) : (
-            <div className="grid  max-md:grid-cols-1 xl:grid-cols-4 gap-6">
+            <div className="grid  sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-6">
               {filteredProducts.map((product) => (
                 <div
                   key={product.id}
-                  className="bg-white rounded-2xl overflow-hidden hover:shadow-xl transition-all duration-300 group cursor-pointer flex flex-col h-full"
+                  className="bg-white rounded-2xl overflow-hidden hover:shadow-xl transition-all duration-300 group cursor-pointer flex flex-col h-full min-w-0"
                   onClick={() => handleQuickView(product)}
                 >
-                  {/* Product Image */}
-                  <div className="h-48 bg-linear-to-br from-huzo-mint to-huzo-cream flex items-center justify-center relative">
-                    <div className="text-center">
-                      <div className="w-16 h-16 bg-huzo-green/10 rounded-full mx-auto mb-3 flex items-center justify-center">
-                        <ShoppingCart className="w-6 h-6 text-huzo-green" />
-                      </div>
-                      <p className="text-huzo-green/60 text-xs">
-                        Изображение продукта
-                      </p>
-                    </div>
+                  <div className="h-48 bg-linear-to-br from-huzo-mint to-huzo-cream relative">
+                    <ProductImage
+                      images={product.images}
+                      alt={product.name}
+                      objectFit="cover" //
+                      enableSwipe={false}
+                    />
 
-                    {/* Category Badge */}
                     <div className="absolute top-3 left-3 bg-huzo-green text-huzo-cream px-2 py-1 rounded text-xs">
                       {product.category}
                     </div>
                   </div>
 
-                  {/* Product Info */}
                   <div className="p-4 flex flex-col grow">
                     <h3 className="text-lg font-light text-huzo-green mb-2 line-clamp-2">
                       {product.name}
@@ -178,7 +168,6 @@ export default function CatalogPage() {
                       ))}
                     </div>
 
-                    {/* Price and Actions */}
                     <div className="flex justify-between items-center pt-3 border-t border-huzo-cream">
                       <div className="text-huzo-green font-medium text-lg">
                         {product.price}
@@ -193,7 +182,6 @@ export default function CatalogPage() {
             </div>
           )}
 
-          {/* Back to Home */}
           <div className="text-center mt-12">
             <Link
               href="/"
@@ -205,7 +193,6 @@ export default function CatalogPage() {
         </div>
       </div>
 
-      {/* Product Modal */}
       <ProductModal
         product={modalProduct}
         isOpen={isModalOpen}

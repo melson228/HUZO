@@ -11,7 +11,7 @@ export default function FloatingCart() {
   if (totalItems === 0) return null;
 
   return (
-    <Link href="/cart" className="fixed bottom-6 right-6 z-40 group">
+    <Link href="/cart" className="fixed bottom-6 right-6 z-100 group">
       <div className="relative">
         <div className="w-16 h-16 bg-huzo-green rounded-full flex items-center justify-center shadow-2xl hover:shadow-3xl transition-all duration-300 group-hover:scale-110 group-hover:bg-huzo-green/90">
           <ShoppingCart className="w-7 h-7 text-huzo-cream" />

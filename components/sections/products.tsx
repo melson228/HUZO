@@ -7,6 +7,7 @@ import { useCart } from "@/context/cart-context";
 import ProductModal from "@/components/ui/product-modal";
 import Link from "next/link";
 import CartCounter from "../ui/cart-counter";
+import { ProductImage } from "../ui/product-image";
 
 export default function Products() {
   const [, setSelectedProduct] = useState<number | null>(null);
@@ -17,10 +18,10 @@ export default function Products() {
   // Выбираем 4 конкретных товара
   const featuredProducts = allProducts.filter(
     (product) =>
-      product.id === 1 || // Шампунь с ароматом водяной лилии
-      product.id === 4 || // Мужской шампунь брутальный мужчина
-      product.id === 8 || // Бальзам с экстрактом конского каштана
-      product.id === 9 // Флюид для волос
+      product.id === 1 ||
+      product.id === 4 ||
+      product.id === 8 ||
+      product.id === 9
   );
 
   const handleQuickView = (product: Product) => {
@@ -60,15 +61,12 @@ export default function Products() {
                 onMouseLeave={() => setSelectedProduct(null)}
                 onClick={() => handleQuickView(product)}
               >
-                <div className="h-48 bg-linear-to-br from-huzo-mint to-huzo-cream flex items-center justify-center relative">
-                  <div className="text-center">
-                    <div className="w-16 h-16 bg-huzo-green/10 rounded-full mx-auto mb-3 flex items-center justify-center">
-                      <ShoppingCart className="w-6 h-6 text-huzo-green" />
-                    </div>
-                    <p className="text-huzo-green/60 text-xs">
-                      Изображение продукта
-                    </p>
-                  </div>
+                <div className="h-48 bg-gradient-to-br from-huzo-mint to-huzo-cream relative">
+                  <ProductImage
+                    images={product.images}
+                    alt={product.name}
+                    className="object-cover"
+                  />
 
                   <div className="absolute top-3 left-3 bg-huzo-green text-huzo-cream px-2 py-1 rounded text-xs">
                     {product.category}

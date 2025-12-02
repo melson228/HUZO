@@ -10,16 +10,16 @@ import {
 
 const platforms = [
   {
-    icon: ShoppingBag,
-    name: "Ozon",
-    description: "Официальный магазин HUZO",
-    url: "https://www.ozon.ru/seller/huzo-1839352",
-  },
-  {
     icon: MessageCircle,
     name: "Telegram",
     description: "Новости и обновления",
     url: "https://t.me/huzo_kosmetik/251",
+  },
+  {
+    icon: ShoppingBag,
+    name: "Ozon",
+    description: "Официальный магазин HUZO",
+    url: "https://www.ozon.ru/seller/huzo-1839352",
   },
   {
     icon: Users,

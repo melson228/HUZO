@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useCart } from "@/context/cart-context";
 import { useState } from "react";
 import OrderModal from "@/components/ui/order-modal";
+import { ProductImage } from "@/components/ui/product-image";
 
 export default function CartPage() {
   const {
@@ -87,8 +88,14 @@ export default function CartPage() {
                         key={item.id}
                         className="flex items-start gap-4 p-4 border border-huzo-cream rounded-xl max-md:flex-wrap"
                       >
-                        <div className="w-20 h-20 bg-linear-to-br from-huzo-mint to-huzo-cream rounded-lg flex items-center justify-center shrink-0">
-                          <ShoppingCart className="w-8 h-8 text-huzo-green" />
+                        <div className="w-20 h-20 flex items-center justify-center shrink-0">
+                          <ProductImage
+                            images={item.images}
+                            alt={item.name}
+                            objectFit="cover"
+                            enableSwipe={false}
+                            className="rounded-lg"
+                          />
                         </div>
 
                         <div className="grow min-w-0">
