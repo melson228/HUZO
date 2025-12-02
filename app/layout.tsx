@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Cormorant_Garamond } from "next/font/google";
+import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 import CustomScrollbar from "@/components/custom-scrollbar";
 import { CartProvider } from "@/context/cart-context";
@@ -27,6 +28,7 @@ export default function RootLayout({
         <CustomScrollbar>
           <CartProvider>
             <div className="min-w-[320px]">{children}</div>
+            <Analytics />
             <FloatingCart />
           </CartProvider>
         </CustomScrollbar>
