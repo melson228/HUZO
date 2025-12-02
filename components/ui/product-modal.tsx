@@ -190,7 +190,6 @@ export default function ProductModal({
   product,
   isOpen,
   onClose,
-  onAddToCart,
 }: ProductModalProps) {
   const modalRef = useRef<HTMLDivElement>(null);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);

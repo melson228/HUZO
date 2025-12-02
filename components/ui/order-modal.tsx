@@ -37,7 +37,10 @@ export default function OrderModal({ isOpen, onClose }: OrderModalProps) {
       if (success && orderId) {
         clearCart();
 
-        const telegramUrl = getTelegramUrl(orderId);
+        // Получаем username из переменных окружения
+        const telegramUsername =
+          process.env.NEXT_PUBLIC_TELEGRAM_USERNAME_COMPANY || "HuzoDecor";
+        const telegramUrl = getTelegramUrl(orderId, telegramUsername);
         window.open(telegramUrl, "_blank");
 
         onClose();
@@ -214,7 +217,7 @@ export default function OrderModal({ isOpen, onClose }: OrderModalProps) {
                 rows={3}
                 value={formData.comment}
                 onChange={handleInputChange}
-                className="w-full px-3 py-2 border border-huzo-mint rounded-lg focus:outline-none focus:ring-2 focus:ring-huzo-green resize-none"
+                className="w-full px-3 py-2 border border-huzo-mint rounded-lg focus:outline-none focus:ring-2 focus:ring-huzo-green"
                 placeholder="Дополнительные пожелания..."
                 disabled={isSubmitting}
               />

@@ -34,7 +34,6 @@ export function ProductImage({
   enableFullscreen = false,
   onFullscreenClick,
   objectFit = "contain",
-  enableSwipe = false,
   showNavigation = false,
   loading = "lazy",
   quality = 85,
@@ -90,7 +89,7 @@ export function ProductImage({
       setHasError(errorRef.current.has(nextImageSrc));
       return next;
     });
-  }, [images.length, images, getSafeImageSrc]);
+  }, [images, getSafeImageSrc]);
 
   const prevImage = useCallback(() => {
     if (images.length <= 1) return;
@@ -101,7 +100,7 @@ export function ProductImage({
       setHasError(errorRef.current.has(nextImageSrc));
       return next;
     });
-  }, [images.length, images, getSafeImageSrc]);
+  }, [images, getSafeImageSrc]);
 
   const goToImage = useCallback(
     (index: number) => {
@@ -112,7 +111,7 @@ export function ProductImage({
       setHasError(errorRef.current.has(newImageSrc));
       setCurrentImageIndex(index);
     },
-    [images.length, currentImageIndex, images, getSafeImageSrc]
+    [currentImageIndex, images, getSafeImageSrc]
   );
 
   const handleImageClick = useCallback(() => {

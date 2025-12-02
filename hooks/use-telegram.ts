@@ -30,7 +30,6 @@ export const useTelegram = () => {
 
     const botToken = process.env.NEXT_PUBLIC_TELEGRAM_BOT_TOKEN;
     const chatId = process.env.NEXT_PUBLIC_TELEGRAM_CHAT_ID;
-    const yourTelegramUsername = process.env.TELEGRAM_USERNAME_COMPANY;
 
     if (!botToken || !chatId) {
       console.error("Telegram credentials not found");
