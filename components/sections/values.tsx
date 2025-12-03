@@ -1,4 +1,5 @@
 import { Users, Heart, Sparkles, Target } from "lucide-react";
+import Image from "next/image";
 
 const values = [
   {
@@ -41,24 +42,49 @@ export default function Values() {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-7xl mx-auto">
-          {values.map((value, index) => (
-            <div
-              key={index}
-              className="text-center p-6 group hover:transform hover:scale-105 transition-all duration-300"
-            >
-              <div className="w-20 h-20 mx-auto mb-6 bg-huzo-mint rounded-full flex items-center justify-center group-hover:bg-huzo-mint/80 transition-colors relative">
-                <value.icon className="w-10 h-10 text-huzo-green" />
-                <div className="absolute inset-0 bg-huzo-green/5 rounded-full group-hover:scale-110 transition-transform duration-300"></div>
+        <div className="grid lg:grid-cols-2 gap-12 max-w-7xl mx-auto items-start">
+          {/* Левая колонка с карточками values */}
+          <div className="grid md:grid-cols-2 gap-8">
+            {values.map((value, index) => (
+              <div
+                key={index}
+                className="text-center p-6 group hover:transform hover:scale-105 transition-all duration-300"
+              >
+                <div className="w-20 h-20 mx-auto mb-6 bg-huzo-mint rounded-full flex items-center justify-center group-hover:bg-huzo-mint/80 transition-colors relative">
+                  <value.icon className="w-10 h-10 text-huzo-green" />
+                  <div className="absolute inset-0 bg-huzo-green/5 rounded-full group-hover:scale-110 transition-transform duration-300"></div>
+                </div>
+                <h3 className="text-2xl font-light text-huzo-green mb-4">
+                  {value.title}
+                </h3>
+                <p className="text-huzo-green/60 leading-relaxed text-sm">
+                  {value.description}
+                </p>
               </div>
-              <h3 className="text-2xl font-light text-huzo-green mb-4">
-                {value.title}
-              </h3>
-              <p className="text-huzo-green/60 leading-relaxed text-sm">
-                {value.description}
-              </p>
+            ))}
+          </div>
+
+          {/* Правая колонка с изображением */}
+          <div className="relative h-full min-h-[400px] lg:min-h-[600px] rounded-2xl overflow-hidden shadow-xl">
+            <Image
+              src="/images/beautiful-hair.jpg"
+              alt="Красивые здоровые волосы с уходом HUZO"
+              fill
+              className="object-cover object-center"
+              sizes="(max-width: 1024px) 100vw, 50vw"
+              priority
+            />
+
+            <div className="absolute inset-0 flex items-center justify-center p-6">
+              <div className="bg-white/70 backdrop-blur-sm rounded-2xl p-8 max-w-sm w-full mx-auto border border-white/40 shadow-2xl">
+                <p className="text-huzo-green font-medium md:text-2xl text-center leading-tight">
+                  Уход, который любят
+                  <br />
+                  ваши волосы в любом возрасте
+                </p>
+              </div>
             </div>
-          ))}
+          </div>
         </div>
 
         <div className="mt-16 max-w-4xl mx-auto">
